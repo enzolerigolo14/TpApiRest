@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js",
-    "exercice1" : "nodemon exercice1/server.js"
+    "exercice1": "nodemon exercice1/server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,8 @@
   "type": "module",
   "dependencies": {
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "zod": "^4.1.12",
+    "zof": "^0.0.0"
   }
 }
