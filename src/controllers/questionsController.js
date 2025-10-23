@@ -1,11 +1,16 @@
-export const  getAllUsers = (req,res) => {
-    res.status(200).send([
-        {
-            id:"1",
-            question:"Allez body count",
-            answer:"15",
-        },
-    ])
+import { db } from '../db/database.js'
+import { questions } from '../db/schema.js'
+
+export const  getAllUsers = async (req,res) => {
+   try {
+    const result =  await db.select().from(questions).orderBy('created_at','desc')
+
+    res.status(200).json(result)
+   } catch (error) {
+    res.status(500).send({
+        error: 'Failed to query questions',
+    })
+   }
 }
 
 export const createQuestion = (req,res) => {

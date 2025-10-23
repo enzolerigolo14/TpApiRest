@@ -2,14 +2,14 @@ import { Router } from 'express'
 
 import { getAllUsers , createQuestion,deleteQuestion} from '../controllers/questionsController.js'
 import logger from '../middleware/logger.js'
-import { validateBody } from '../middleware/validation.js'
-import { createQuestionSchema } from '../models/question.js'
+import { validateBody, validateParams } from '../middleware/validation.js'
+import { createQuestionSchema, questionIdSchema } from '../models/question.js'
 
 const router = Router()
 
-router.get('/',logger, getAllUsers )
+router.get('/', getAllUsers )
 router.post('/',validateBody(createQuestionSchema), createQuestion)
-router.delete('/:id',deleteQuestion)
+router.delete('/:id',validateParams(questionIdSchema),deleteQuestion)
 
 
 export default router 
